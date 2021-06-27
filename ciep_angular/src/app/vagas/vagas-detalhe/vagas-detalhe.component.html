@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-header text-center">
+    Manutenção de Vagas:
+  </div>
+  <div class="card-body">
+    <div class="card-container">
+      <div>
+        <form [formGroup]="formVaga" (ngSubmit)="onSubmit"  class="form-exemplo">
+
+          <div style="display: none">
+            <mat-form-field class="example-full-width">
+              <mat-label>ID</mat-label>
+              <input matInput  formControlName="id">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>NOME DA EMPRESA</mat-label>
+            <input type="text" matInput placeholder="Ex. Google" formControlName="nomeEmpresa"
+                   [errorStateMatcher]="matcher"
+                   required>
+
+            <mat-error *ngIf="getControl.nomeEmpresa.hasError('nomeEmpresa') && !getControl.nomeEmpresa.hasError('required')">
+              por favor entre com nome da Empresa válido!
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>ESCOLARIDADE</mat-label>
+            <input type="text" matInput placeholder="Ex. Superior Completo" formControlName="escolaridade"
+                   [errorStateMatcher]="matcher"
+                   required>
+            <mat-error *ngIf="getControl.escolaridade.hasError('escolaridade') && !getControl.escolaridade.hasError('required')">
+              por favor entre com uma escolaridade válida!
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>DESCRIÇÃO</mat-label>
+            <input type="text" matInput placeholder="Ex. Desenvolvedor Júnior" formControlName="descricao"
+                   [errorStateMatcher]="matcher"
+                   required>
+            <mat-error *ngIf="getControl.descricao.hasError('descricao') && !getControl.descricao.hasError('required')">
+              por favor entre com uma descrição válida!
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Salário</mat-label>
+            <input type="text" matInput placeholder="Ex. 5000.00" formControlName="salario"
+                   [errorStateMatcher]="matcher"
+                   required>
+            <mat-error *ngIf="getControl.salario.hasError('salario') && !getControl.salario.hasError('required')">
+              por favor entre com um salário válido!
+            </mat-error>
+          </mat-form-field>
+
+          <hr>
+
+          <button style="margin-right: 5px" mat-raised-button type="submit" (click)="onSubmit()" color="primary"> Salvar </button>
+          <button mat-raised-button type="button" (click)="voltar()" color="default"> Voltar </button>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

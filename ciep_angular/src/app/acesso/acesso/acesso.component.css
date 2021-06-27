@@ -1,0 +1,21 @@
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 32px;
+}
+.card-acesso {
+  text-align: center;
+  padding-left: 430px;
+  padding-top: 100px;
+}
+
+.card-acesso div{
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+#btn_cadastro{
+  width: 160px;
+  height: 160px;
+  font-size: 20px;
+  border-radius: 50%;
+}

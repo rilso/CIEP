@@ -1,0 +1,58 @@
+<div style="margin-left: 500px">
+  <div class="card" style="width: 50%">
+    <div class="card-header text-center">
+      Dados da Empresa
+    </div>
+    <div class="card-body">
+      <div class="card-container">
+        <div>
+          <form [formGroup]="formEmpresa" (ngSubmit)="onSubmit"  class="form-exemplo">
+            <div style="display: none">
+              <mat-form-field class="example-full-width">
+                <mat-label>ID</mat-label>
+                <input matInput  formControlName="id">
+              </mat-form-field>
+            </div>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Razao Social</mat-label>
+              <input type="text" matInput placeholder="Ex. Nome devidamente registrado" formControlName="razaoSocial"
+                     [errorStateMatcher]="matcher"
+                     required>
+              <mat-error *ngIf="getControl.razaoSocial.hasError('razaoSocial') && !getControl.razaoSocial.hasError('required')">
+                Por favor entre com nome válido!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Nome Fantasia</mat-label>
+              <input type="text" matInput placeholder="Ex. Nome da empresa" formControlName="nomeFant"
+                     [errorStateMatcher]="matcher"
+                     required>
+              <mat-error *ngIf="getControl.nomeFant.hasError('nomeFant') && !getControl.nomeFant.hasError('required')">
+                Por favor entre com nome válido!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>CNPJ</mat-label>
+              <input type="text" matInput placeholder="Ex: 999.999.999-99"  [errorStateMatcher]="matcher"
+                     mask="000.000.000-99" required  formControlName="cnpj">
+              <mat-error *ngIf="getControl.cnpj.hasError('cnpj') && !getControl.cnpj.hasError('required')">
+                Por favor entre com cnpj válido!
+              </mat-error>
+            </mat-form-field>
+
+            <hr>
+            <div class="text-center">
+              <button style="margin-right: 5px" mat-raised-button type="submit" (click)="onSubmit()" color="primary"> Salvar </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

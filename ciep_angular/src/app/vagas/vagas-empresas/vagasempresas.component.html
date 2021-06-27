@@ -1,0 +1,55 @@
+<div class="text-end" style="padding-bottom: 10px">
+  <button mat-raised-button type="button" (click)="cadastrarVagasEmprego()" color="primary"> Cadastrar </button>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h1>
+      Listagem das Vagas de Emprego
+    </h1>
+  </div>
+  <br>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let vagas"> {{vagas.id}} </td>
+    </ng-container>
+
+    <!-- Nome Column -->
+    <ng-container matColumnDef="nomeEmpresa">
+      <th mat-header-cell *matHeaderCellDef> Nome da Empresa </th>
+      <td mat-cell *matCellDef="let vagas"> {{vagas.nomeEmpresa}} </td>
+    </ng-container>
+
+    <!-- Escolaridade Column -->
+    <ng-container matColumnDef="escolaridade">
+      <th mat-header-cell *matHeaderCellDef> Escolaridade </th>
+      <td mat-cell *matCellDef="let vagas"> {{vagas.escolaridade}} </td>
+    </ng-container>
+
+    <!-- Descrição Column -->
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let vagas"> {{vagas.descricao}} </td>
+    </ng-container>
+
+    <!-- Salário Column -->
+    <ng-container matColumnDef="salario">
+      <th mat-header-cell *matHeaderCellDef> Salário </th>
+      <td mat-cell *matCellDef="let vagas"> {{vagas.salario}} </td>
+    </ng-container>
+
+    <!-- Ações -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef> AÇÕES </th>
+      <td mat-cell *matCellDef="let vagas">
+        <div>
+          <button style="margin-right: 5px" mat-raised-button (click)="editarVagasEmprego(vagas)" color="primary"> Editar </button>
+          <button mat-raised-button color= "warn" (click)="deletarVagaEmprego(vagas)"> Excluir </button>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

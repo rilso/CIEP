@@ -1,0 +1,74 @@
+<div style="margin-left: 500px">
+  <div class="card" style="width: 50%">
+    <div class="card-header text-center">
+      Dados Pessoais
+    </div>
+    <div class="card-body">
+      <div class="card-container">
+        <div>
+          <form [formGroup]="formPessoa" (ngSubmit)="onSubmit"  class="form-exemplo">
+
+            <div style="display: none">
+              <mat-form-field class="example-full-width">
+                <mat-label>ID</mat-label>
+                <input matInput  formControlName="id">
+              </mat-form-field>
+            </div>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Nome</mat-label>
+              <input type="text" matInput placeholder="Ex. Carlos" formControlName="nome"
+                     [errorStateMatcher]="matcher"
+                     required>
+              <mat-error *ngIf="getControl.nome.hasError('nome') && !getControl.nome.hasError('required')">
+                Por favor entre com nome válido!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>CPF</mat-label>
+              <input type="text" matInput placeholder="Ex: 999.999.999-99"  [errorStateMatcher]="matcher"
+                     mask="000.000.000-99" required  formControlName="cpf">
+              <mat-error *ngIf="getControl.cpf.hasError('cpf') && !getControl.cpf.hasError('required')">
+                Por favor entre com cpf válido!
+              </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="sexo">
+                <mat-option *ngFor="let option of select_sexo" [value]="option.sexo">{{ option.nome }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Idade</mat-label>
+              <input type="number" matInput placeholder="Ex:32"  [errorStateMatcher]="matcher"
+                     mask="" required  formControlName="idade">
+              <mat-error *ngIf="getControl.idade.hasError('idade') && !getControl.idade.hasError('required')">
+                Por favor entre uma idade válida!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Descrição</mat-label>
+              <input type="text" matInput placeholder="Ex: Graduado em Sistemas De Informação"  [errorStateMatcher]="matcher"
+                     mask="" required  formControlName="descricao">
+              <mat-error *ngIf="getControl.descricao.hasError('descricao') && !getControl.descricao.hasError('required')">
+                Por favor entre uma descrição válida!
+              </mat-error>
+            </mat-form-field>
+            <hr>
+            <div class="text-center">
+              <button mat-raised-button type="submit" (click)="onSubmit()" color="primary"> Salvar </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
